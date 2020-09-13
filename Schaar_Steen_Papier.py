@@ -41,25 +41,25 @@ keuzes = ["schaar","steen","papier"] #Dit is een lijst
 def speler_input():
     keuze_speler = (input("Uw keuze:")).lower()
     while (keuze_speler not in keuzes):
-        keuze_speler = (input("Dit was geen optie lolbroek. Opnieuw!\U0001F913:")).lower()
+        keuze_speler = (input("Dit was geen optie lolbroek. Opnieuw!\U0001F913:")).lower()#De functie '.lower() maakt alles met kleine letter
     return keuze_speler #Door de return is "speler_input" nu de input van "keuze_speler"
                         
 
 
 def computer_input():
-    computer_keuze = keuzes[random.randint(0,2)]#kiest element uit lijst; 0, 1 of 2
+    computer_keuze = keuzes[random.randint(0,2)]#Kiest element uit lijst; 0, 1 of 2
     return computer_keuze
 
 def who_wins():
     winnaar = 0
-    while (winnaar == 0): #while zorgt ervoor dat het blijft verder gaan als winnaar = 0
+    while (winnaar == 0): #While zorgt ervoor dat het blijft verder gaan als winnaar = 0
         computer = computer_input()
         speler = speler_input()
         if speler == computer:
             winnaar = 0
             print("De computer had ook", computer,", opnieuw!")
             continue
-        winnaar = 1 #de volgende if/elif zorgt ervoor dat als jij zou winnen winnaar = 2, anders blijft winnaar 1
+        winnaar = 1 #De volgende if/elif zorgt ervoor dat als jij zou winnen winnaar = 2, anders blijft winnaar 1
         if speler == "papier" and computer == "steen":
             winnaar = 2
         elif speler == "schaar" and computer =="papier":
@@ -67,8 +67,8 @@ def who_wins():
         elif speler == "steen" and computer == "schaar":
             winnaar = 2
     return(winnaar, speler, computer) #Zorgen dat de if/elif statemets in de loop staan
-#geen [] bij return als dat niet ndg is. [] duid een lijst aan; () of niets een tupel. 
-#lijst = kan aangepast worden; tupel = kan niet aangepast worden
+#Geen [] bij return als dat niet ndg is. [] duid een lijst aan; () of niets een tupel. 
+#Lijst = kan aangepast worden; tupel = kan niet aangepast worden
 
 
 
@@ -114,8 +114,8 @@ print("Nu kunnen we beginnen.\n"
 score_speler = 0
 score_computer = 0
 
-while(1):#while(x) herhaalt enkel als uw x niet gelijk is aan 0
-    winnaar, speler, computer = who_wins() #volgorde is belangrijk! Hier heb je who_wins() die [winnaar, speler, computer] bevat. 
+while(1):#While(x) herhaalt enkel als uw x niet gelijk is aan 0
+    winnaar, speler, computer = who_wins() #Volgorde is belangrijk! Hier heb je who_wins() die [winnaar, speler, computer] bevat. 
     if winnaar == 1:                       #Daarna stel ik dat winnaar=winnnaar, speler=speler, computer=computer; als volgorde verschillend is stel ik bv. computer=speler
         print(emojis[speler],"verliest tegen", emojis[computer])
         score_computer += 1
@@ -133,9 +133,9 @@ while(1):#while(x) herhaalt enkel als uw x niet gelijk is aan 0
 
     
 
-#schaar verliest steen
-#steen verliest papier
-#papier verliest schaar
+#Schaar verliest tegen steen
+#Steen verliest tegen papier
+#Papier verliest tegen schaar
 
 #gelijk = 0
 #computer gewonnen = 1
