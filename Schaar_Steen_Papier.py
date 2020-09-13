@@ -1,5 +1,6 @@
 import random
 
+
 class bcolors:
     ENDC='\033[0m'
     BOLD='\033[01m' #Maakt vet
@@ -7,8 +8,8 @@ class bcolors:
     UNDERLINE='\033[04m' #Onderlijnt
     REVERSE='\033[07m' #Witte achtergrond
     STRIKETHROUGH='\033[09m'
-    INVISIBLE='\033[08m'#Maamkt onzichtbaar, duhhh
-class text:   
+    INVISIBLE='\033[08m'#Maakt onzichtbaar, duhhh
+class letters:   
     BLACK='\033[30m'
     RED='\033[31m'
     GREEN='\033[32m'
@@ -36,12 +37,13 @@ class background:
 
 
 
-keuzes = ["Schaar","Steen","Papier"]
+keuzes = ["schaar","steen","papier"] #Dit is een lijst
 def speler_input():
-    keuze_speler = input("Uw keuze:")
+    keuze_speler = (input("Uw keuze:")).lower()
     while (keuze_speler not in keuzes):
-        keuze_speler = input("Dit was geen optie lolbroek. Opnieuw!\U0001F913")
-    return keuze_speler
+        keuze_speler = (input("Dit was geen optie lolbroek. Opnieuw!\U0001F913:")).lower()
+    return keuze_speler #Door de return is "speler_input" nu de input van "keuze_speler"
+                        
 
 
 def computer_input():
@@ -58,11 +60,11 @@ def who_wins():
             print("De computer had ook", computer,", opnieuw!")
             continue
         winnaar = 1 #de volgende if/elif zorgt ervoor dat als jij zou winnen winnaar = 2, anders blijft winnaar 1
-        if speler == "Papier" and computer == "Steen":
+        if speler == "papier" and computer == "steen":
             winnaar = 2
-        elif speler == "Schaar" and computer =="Papier":
+        elif speler == "schaar" and computer =="papier":
             winnaar = 2
-        elif speler == "Steen" and computer == "Schaar":
+        elif speler == "steen" and computer == "schaar":
             winnaar = 2
     return(winnaar, speler, computer) #Zorgen dat de if/elif statemets in de loop staan
 #geen [] bij return als dat niet ndg is. [] duid een lijst aan; () of niets een tupel. 
@@ -77,33 +79,33 @@ def who_wins():
 #dictionary[key]=value
 
 #emojis["papier"] geeft \U...
-emojis ={ "Schaar": "\U0001F596",
-         "Steen": "\U0001F44A",
-         "Papier": "\U0001F91A"}
+emojis ={ "schaar": "\U0001F596",
+         "steen": "\U0001F44A",
+         "papier": "\U0001F91A"}
 #avatar["Kakje"] geeft \U...
-avatar ={"Kakje":"\U0001F4A9",
-          "Raket":"\U0001F680",
-          "Smiley":"\U0001F600"}
+avatar ={"kakje":"\U0001F4A9",
+          "raket":"\U0001F680",
+          "smiley":"\U0001F600"}
 #cavatar["Kakje"] geeft text.
-cavatar ={"Kakje": text.ORANGE,
-          "Raket": text.CYAN,
-          "Smiley": text.YELLOW}
+cavatar ={"kakje": letters.ORANGE,
+          "raket": letters.CYAN,
+          "smiley": letters.YELLOW}
 
-avatar_keuze = ["Kakje", "Raket", "Smiley"]
+avatar_keuze = ["kakje", "raket", "smiley"]
 
 print("Welkom bij schaar, steen, papier tegen de \U0001F63A \n"
-      "Je kan je figuur kiezen uit:(Hoofdlettergevoelig): \n"
-      ,text.ORANGE," \U0001F4A9",bcolors.ENDC,"Kakje \n"
-      ,text.CYAN," \U0001F680",bcolors.ENDC," Raket \n"
-      ,text.YELLOW," \U0001F600",bcolors.ENDC," Smiley")
-avatar_speler = input("Maak uw keuze:")
+      "Je kan je figuur kiezen uit: \n"
+      ,letters.ORANGE," \U0001F4A9",bcolors.ENDC,"Kakje \n"
+      ,letters.CYAN," \U0001F680",bcolors.ENDC,"Raket \n"
+      ,letters.YELLOW," \U0001F600",bcolors.ENDC,"Smiley")
+avatar_speler = (input("Maak uw keuze:")).lower()
 while (avatar_speler not in avatar_keuze):
-    avatar_speler = input("Dit is geen optie lolbroek.")
+    avatar_speler = (input("Dit is geen optie lolbroek:")).lower()
     
 
 
-print(text.YELLOW,"Nu kunnen we beginnen.\n"
-      "Je kan kiezen tussen: (Hoofdlettergevoelig): \n"
+print("Nu kunnen we beginnen.\n"
+      "Je kan kiezen tussen: \n"
       "\U0001F596 Schaar\n"
       "\U0001F44A Steen\n"
       "\U0001F91A Papier")
@@ -121,12 +123,12 @@ while(1):#while(x) herhaalt enkel als uw x niet gelijk is aan 0
         print(emojis[speler], "wint tegen", emojis[computer])
         score_speler += 1
     if score_computer<score_speler:
-        print(cavatar[avatar_speler]+avatar[avatar_speler]+bcolors.ENDC, text.GREEN, score_speler, bcolors.ENDC,"-", text.RED,score_computer,bcolors.ENDC, text.DARKGREY+"\U0001F63A"+bcolors.ENDC)
+        print(cavatar[avatar_speler]+avatar[avatar_speler]+bcolors.ENDC, letters.GREEN, score_speler, bcolors.ENDC,"-", letters.RED,score_computer,bcolors.ENDC, letters.DARKGREY+"\U0001F63A"+bcolors.ENDC)
     elif score_computer>score_speler:
-        print(cavatar[avatar_speler]+avatar[avatar_speler]+bcolors.ENDC, text.RED,score_speler, bcolors.ENDC,"-", text.GREEN,score_computer,bcolors.ENDC, text.DARKGREY+"\U0001F63A"+bcolors.ENDC )
+        print(cavatar[avatar_speler]+avatar[avatar_speler]+bcolors.ENDC, letters.RED,score_speler, bcolors.ENDC,"-", letters.GREEN,score_computer,bcolors.ENDC, letters.DARKGREY+"\U0001F63A"+bcolors.ENDC )
     else:
-        print(cavatar[avatar_speler] + avatar[avatar_speler], bcolors.ENDC, text.PURPLE, score_speler, bcolors.ENDC,"-", text.PURPLE, score_computer, bcolors.ENDC, text.DARKGREY+"\U0001F63A"+bcolors.ENDC)
-    a=input("Press 1 to quit, Enter to continue")
+        print(cavatar[avatar_speler] + avatar[avatar_speler], bcolors.ENDC, letters.PURPLE, score_speler, bcolors.ENDC,"-", letters.PURPLE, score_computer, bcolors.ENDC, letters.DARKGREY+"\U0001F63A"+bcolors.ENDC)
+    input("Press Enter to continue")
     
 
     
