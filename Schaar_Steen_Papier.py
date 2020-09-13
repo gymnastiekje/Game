@@ -36,15 +36,12 @@ class background:
     LIGHTGREY='\033[47m'
 
 
-
 keuzes = ["schaar","steen","papier"] #Dit is een lijst
-def speler_input():
+def speler_input(): #Dit is een functie
     keuze_speler = (input("Uw keuze:")).lower()
     while (keuze_speler not in keuzes):
         keuze_speler = (input("Dit was geen optie lolbroek. Opnieuw!\U0001F913:")).lower()#De functie '.lower() maakt alles met kleine letter
-    return keuze_speler #Door de return is "speler_input" nu de input van "keuze_speler"
-                        
-
+    return keuze_speler #Die return zorgt ervoor dat keuze_speler de output v/d functie wordt
 
 def computer_input():
     computer_keuze = keuzes[random.randint(0,2)]#Kiest element uit lijst; 0, 1 of 2
@@ -71,8 +68,6 @@ def who_wins():
 #Lijst = kan aangepast worden; tupel = kan niet aangepast worden
 
 
-
-
 #Werking: Dictionary = {"key":value
 #                       "key":value
 #                        etc.}
@@ -95,14 +90,13 @@ avatar_keuze = ["kakje", "raket", "smiley"]
 
 print("Welkom bij schaar, steen, papier tegen de \U0001F63A \n"
       "Je kan je figuur kiezen uit: \n"
-      ,letters.ORANGE," \U0001F4A9",bcolors.ENDC,"Kakje \n"
-      ,letters.CYAN," \U0001F680",bcolors.ENDC,"Raket \n"
-      ,letters.YELLOW," \U0001F600",bcolors.ENDC,"Smiley")
+      ,letters.ORANGE,avatar["kakje"],bcolors.ENDC,"Kakje \n"
+      ,letters.CYAN,avatar["raket"],bcolors.ENDC,"Raket \n"
+      ,letters.YELLOW,avatar["smiley"],bcolors.ENDC,"Smiley")
 avatar_speler = (input("Maak uw keuze:")).lower()
 while (avatar_speler not in avatar_keuze):
     avatar_speler = (input("Dit is geen optie lolbroek:")).lower()
     
-
 
 print("Nu kunnen we beginnen.\n"
       "Je kan kiezen tussen: \n"
@@ -129,9 +123,6 @@ while(1):#While(x) herhaalt enkel als uw x niet gelijk is aan 0
     else:
         print(cavatar[avatar_speler] + avatar[avatar_speler], bcolors.ENDC, letters.PURPLE, score_speler, bcolors.ENDC,"-", letters.PURPLE, score_computer, bcolors.ENDC, letters.DARKGREY+"\U0001F63A"+bcolors.ENDC)
     input("Press Enter to continue")
-    
-
-    
 
 #Schaar verliest tegen steen
 #Steen verliest tegen papier
