@@ -67,6 +67,22 @@ def who_wins():
 #Geen [] bij return als dat niet ndg is. [] duid een lijst aan; () of niets een tupel. 
 #Lijst = kan aangepast worden; tupel = kan niet aangepast worden
 
+keuze_ec=["e", "c"]
+def prompt_continue():
+    print("What to do next?\n"
+          "<c(ontinue)?>\n"
+          "<e(xit)?>\n")
+    check=input()
+    if check == "e":
+        return False
+    elif check == "c":
+        return True
+    while(check not in keuze_ec):
+        check = input("Dit was geen keuze lolbroek!:")
+        if check == "e":
+            return False
+        elif check == "c":
+            return True
 
 #Werking: Dictionary = {"key":value
 #                       "key":value
@@ -93,6 +109,7 @@ print("Welkom bij schaar, steen, papier tegen de \U0001F63A \n"
       ,letters.ORANGE,avatar["kakje"],bcolors.ENDC,"Kakje \n"
       ,letters.CYAN,avatar["raket"],bcolors.ENDC,"Raket \n"
       ,letters.YELLOW,avatar["smiley"],bcolors.ENDC,"Smiley")
+
 avatar_speler = (input("Maak uw keuze:")).lower()
 while (avatar_speler not in avatar_keuze):
     avatar_speler = (input("Dit is geen optie lolbroek:")).lower()
@@ -122,7 +139,20 @@ while(1):#While(x) herhaalt enkel als uw x niet gelijk is aan 0
         print(cavatar[avatar_speler]+avatar[avatar_speler]+bcolors.ENDC, letters.RED,score_speler, bcolors.ENDC,"-", letters.GREEN,score_computer,bcolors.ENDC, letters.DARKGREY+"\U0001F63A"+bcolors.ENDC )
     else:
         print(cavatar[avatar_speler] + avatar[avatar_speler], bcolors.ENDC, letters.PURPLE, score_speler, bcolors.ENDC,"-", letters.PURPLE, score_computer, bcolors.ENDC, letters.DARKGREY+"\U0001F63A"+bcolors.ENDC)
-    input("Press Enter to continue")
+    if prompt_continue()==True: #True moet niet aangezien if al checkt of het true is
+        continue
+    else:
+        print("Dit is de eindscore!")
+        if score_computer<score_speler:
+            print(cavatar[avatar_speler]+avatar[avatar_speler]+bcolors.ENDC, letters.GREEN, score_speler, bcolors.ENDC,"-", letters.RED,score_computer,bcolors.ENDC, letters.DARKGREY+"\U0001F63A"+bcolors.ENDC,"\n"
+                  "Proficiat! Je hebt gewonnen!\U0001F973")
+        elif score_computer>score_speler:
+            print(cavatar[avatar_speler]+avatar[avatar_speler]+bcolors.ENDC, letters.RED,score_speler, bcolors.ENDC,"-", letters.GREEN,score_computer,bcolors.ENDC, letters.DARKGREY+"\U0001F63A"+bcolors.ENDC,"\n"
+                  "Jammer... Volgende keer beter!\U0001F9D0")
+        else:
+            print(cavatar[avatar_speler] + avatar[avatar_speler], bcolors.ENDC, letters.PURPLE, score_speler, bcolors.ENDC,"-", letters.PURPLE, score_computer, bcolors.ENDC, letters.DARKGREY+"\U0001F63A"+bcolors.ENDC,"\n"
+                  "Goed gespeeld! Volgende keer winnen eh.\U0001F92A")
+        break
 
 #Schaar verliest tegen steen
 #Steen verliest tegen papier
